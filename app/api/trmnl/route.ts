@@ -27,10 +27,7 @@ export async function GET(request: NextRequest) {
         { name: 'Recipe Book+', mrr: '$6,700', revenue: '$22,500' },
         { name: 'Note Taking Guru', mrr: '$5,200', revenue: '$18,000' },
         { name: 'Photo Editor Ultra', mrr: '$4,100', revenue: '$15,000' },
-        { name: 'Task Manager Pro', mrr: '$3,800', revenue: '$12,000' },
-        { name: 'Language Learning', mrr: '$3,200', revenue: '$10,500' },
-        { name: 'Sleep Tracker', mrr: '$2,000', revenue: '$5,000' },
-      ];
+   ];
 
       return NextResponse.json({
         total_mrr: currency === 'EUR' ? '€42,300' : '$45,800',
