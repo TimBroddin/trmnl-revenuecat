@@ -58,9 +58,8 @@ Once deployed, configure your TRMNL device:
 3. Set the plugin URL to: `https://your-deployment-url.vercel.app/api/trmnl`
    - For EUR instead of USD, use: `https://your-deployment-url.vercel.app/api/trmnl?currency=EUR`
 4. Add a **Custom Header**:
-   - Header name: `Authorization`
-   - Header value: `Bearer your_secret_password_here` (use the same password from `.env`)
-
+   - `Authorization=Bearer your_secret_password_here`
+   
 ## API Endpoint
 
 **Endpoint:** `GET /api/trmnl`
