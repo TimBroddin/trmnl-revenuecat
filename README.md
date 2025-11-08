@@ -2,6 +2,8 @@
 
 A private TRMNL plugin that displays RevenueCat metrics including MRR (Monthly Recurring Revenue) and total revenue for the last 28 days, with per-project/app breakdowns.
 
+Inspired by [jazzychad's TRMNL RevenueCat plugin](https://notes.jazzychad.net/post/8ce63855296e29c5596163e6fceece82).
+
 ## Features
 
 - 📊 Monthly Recurring Revenue (MRR) - last 28 days
@@ -65,6 +67,12 @@ Once deployed, configure your TRMNL device:
 **Query Parameters:**
 - `currency` (optional): Currency for the response. Supported values: `USD` (default), `EUR`
   - Example: `/api/trmnl?currency=EUR`
+- `sort` (optional): Sort order for projects. Supported values: `name` (default), `mrr`, `revenue`
+  - `name`: Alphabetical by project name
+  - `mrr`: By Monthly Recurring Revenue (descending)
+  - `revenue`: By total revenue (descending)
+  - Example: `/api/trmnl?sort=mrr`
+  - Example with currency: `/api/trmnl?currency=EUR&sort=revenue`
 - `demo` (optional): Enable demo mode with mock data for screenshots/testing. Set to `true` to enable.
   - Example: `/api/trmnl?demo=true`
   - Example with currency: `/api/trmnl?demo=true&currency=EUR`
@@ -76,7 +84,7 @@ Once deployed, configure your TRMNL device:
     "total_revenue": "$119.00",
     "projects": [
       {
-        "name": "Street Viewer Pro",
+        "name": "My lovely project",
         "mrr": "$15.00",
         "revenue": "$119.00"
       }
@@ -91,7 +99,7 @@ Once deployed, configure your TRMNL device:
     "total_revenue": "€109.48",
     "projects": [
       {
-        "name": "Street Viewer Pro",
+        "name": "My lovely project",
         "mrr": "€13.80",
         "revenue": "€109.48"
       }
@@ -122,7 +130,7 @@ Multiple optimized layouts are available in the `/layouts` directory, each desig
 
 ### Layout Files
 
-- **`shared.html`** - Reusable Liquid templates (automatically prepended to all layouts)
+- **`shared.html`** - Reusable Liquid templates (used in the other layouts)
   - Title bar component
   - Metric box templates
   - Project table templates
@@ -134,7 +142,6 @@ Multiple optimized layouts are available in the `/layouts` directory, each desig
 
 - **`half_horizontal.html`** - Wide, short display
   - Side-by-side metrics prominently displayed
-  - Top 5 projects only (condensed table)
   - Optimized for horizontal half-screen
 
 - **`half_vertical.html`** - Narrow, tall display
@@ -148,22 +155,13 @@ Multiple optimized layouts are available in the `/layouts` directory, each desig
   - Compact title bar ("RC")
   - Minimal chrome, maximum data visibility
 
-### Features
-
-- Built using TRMNL Framework v2 components
-- Optimized for e-ink displays
-- Uses tabular numbers for proper alignment
-- DRY architecture with reusable Liquid templates
-- Each layout auto-adapts to screen size
-
 ### Usage
 
-1. Choose the layout that matches your TRMNL screen configuration
-2. Copy the contents of the appropriate layout file from `/layouts`
-3. Paste into your TRMNL private plugin template editor
-4. The shared templates are automatically included
-5. The template uses Liquid syntax and will automatically populate with your data
-6. No additional CSS needed - uses TRMNL's built-in framework classes
+1. Add all four layouts in the editor:
+   - **Full Screen** → use `full.html`
+   - **Half Horizontal** → use `half_horizontal.html`
+   - **Half Vertical** → use `half_vertical.html`
+   - **Quadrant** → use `quadrant.html`
 
 ## Development
 
@@ -215,7 +213,3 @@ RevenueCat V2 API has rate limits. This plugin:
 - Use a strong, unique password for `TRMNL_PASSWORD`
 - Consider implementing rate limiting on the endpoint
 - In production (Vercel), set environment variables in the deployment settings
-
-## License
-
-Private use only.

@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const currencyParam = searchParams.get('currency')?.toUpperCase() || 'USD';
     const demo = searchParams.get('demo') === 'true';
+    const sort = searchParams.get('sort') || 'name';
 
     if (!isValidCurrency(currencyParam)) {
       return NextResponse.json(
@@ -119,8 +120,25 @@ export async function GET(request: NextRequest) {
       })
     );
 
-    // Sort projects alphabetically by name
-    projects.sort((a, b) => a.name.localeCompare(b.name));
+    // Sort projects based on sort parameter
+    if (sort === 'mrr') {
+      // Sort by MRR descending (parse currency string to number)
+      projects.sort((a, b) => {
+        const mrrA = parseFloat(a.mrr.replace(/[^0-9.-]+/g, ''));
+        const mrrB = parseFloat(b.mrr.replace(/[^0-9.-]+/g, ''));
+        return mrrB - mrrA;
+      });
+    } else if (sort === 'revenue') {
+      // Sort by revenue descending (parse currency string to number)
+      projects.sort((a, b) => {
+        const revA = parseFloat(a.revenue.replace(/[^0-9.-]+/g, ''));
+        const revB = parseFloat(b.revenue.replace(/[^0-9.-]+/g, ''));
+        return revB - revA;
+      });
+    } else {
+      // Default: sort alphabetically by name
+      projects.sort((a, b) => a.name.localeCompare(b.name));
+    }
 
     if (currency === 'EUR') {
       totalMrr = await convertToEur(totalMrr);
