@@ -98,6 +98,9 @@ export async function GET(request: NextRequest) {
       })
     );
 
+    // Sort projects alphabetically by name
+    projects.sort((a, b) => a.name.localeCompare(b.name));
+
     if (currency === 'EUR') {
       totalMrr = await convertToEur(totalMrr);
       totalRevenue = await convertToEur(totalRevenue);
