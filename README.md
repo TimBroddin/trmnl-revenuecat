@@ -116,15 +116,17 @@ Use these variables in your TRMNL template:
 ## TRMNL Template
 
 A complete template is available in `trmnl-template.html` featuring:
-- Projects listed on the left with individual MRR and Revenue
-- Total metrics displayed as prominent boxes on the right
-- Clean monospace design optimized for e-ink displays
-- Black and white styling for TRMNL devices
+- Large total metrics displayed at the top (MRR and 28-day Revenue)
+- Clean list of all projects below with individual metrics
+- Built using TRMNL Framework v2 components
+- Optimized for e-ink displays (800x480px default)
+- Uses tabular numbers for proper alignment
 
 **To use:**
 1. Copy the contents of `trmnl-template.html`
 2. Paste into your TRMNL private plugin template editor
 3. The template uses Handlebars syntax and will automatically populate with your data
+4. No additional CSS needed - uses TRMNL's built-in framework classes
 
 ## Development
 

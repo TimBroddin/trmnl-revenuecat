@@ -108,11 +108,10 @@ export async function GET(request: NextRequest) {
 
     // Format response for TRMNL display
     const response = {
-      merge_variables: {
         total_mrr: formatCurrency(totalMrr, currency),
         total_revenue: formatCurrency(totalRevenue, currency),
         projects,
-      },
+      
     };
 
     return NextResponse.json(response);
