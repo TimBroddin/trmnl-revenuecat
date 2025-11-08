@@ -69,7 +69,6 @@ Once deployed, configure your TRMNL device:
 **Response Format (USD):**
 ```json
 {
-  "merge_variables": {
     "total_mrr": "$15.00",
     "total_revenue": "$119.00",
     "projects": [
@@ -79,14 +78,12 @@ Once deployed, configure your TRMNL device:
         "revenue": "$119.00"
       }
     ]
-  }
 }
 ```
 
 **Response Format (EUR with `?currency=EUR`):**
 ```json
 {
-  "merge_variables": {
     "total_mrr": "€13.80",
     "total_revenue": "€109.48",
     "projects": [
@@ -96,7 +93,6 @@ Once deployed, configure your TRMNL device:
         "revenue": "€109.48"
       }
     ]
-  }
 }
 ```
 
