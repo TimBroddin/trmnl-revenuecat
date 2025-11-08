@@ -6,7 +6,7 @@
 
 A private TRMNL plugin that displays RevenueCat metrics including MRR (Monthly Recurring Revenue) and total revenue for the last 28 days, with per-project/app breakdowns.
 
-Inspired by [jazzychad's TRMNL RevenueCat plugin](https://notes.jazzychad.net/post/8ce63855296e29c5596163e6fceece82).
+Inspired by [jazzychad's TRMNL RevenueCat plugin](https://notes.jazzychad.net/post/8ce63855296e29c5596163e6fceece82) but with support for multiple projects.
 
 ## Features
 
