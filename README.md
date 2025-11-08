@@ -2,6 +2,8 @@
 
 ![TRMNL RevenueCat Plugin](README.webp)
 
+*Screenshot shows demo data 😎*
+
 A private TRMNL plugin that displays RevenueCat metrics including MRR (Monthly Recurring Revenue) and total revenue for the last 28 days, with per-project/app breakdowns.
 
 Inspired by [jazzychad's TRMNL RevenueCat plugin](https://notes.jazzychad.net/post/8ce63855296e29c5596163e6fceece82).
@@ -37,7 +39,7 @@ vercel deploy
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file in your project root:
+Create a `.env.local` file in your project root when testing, or configure these in Vercel, ... UI when deployed:
 
 ```bash
 # Authentication password for TRMNL requests
