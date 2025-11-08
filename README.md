@@ -136,7 +136,7 @@ Multiple optimized layouts are available in the `/layouts` directory, each desig
   - Project table templates
 
 - **`full.html`** - Full screen layout (800x480px)
-  - Two-column metrics grid (MRR + Revenue)
+  - Two-column metrics grid (MRR + Revenue) if less than 6 projects
   - Complete projects table with all data
   - Ideal for comprehensive overview
 
