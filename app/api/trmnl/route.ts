@@ -4,9 +4,10 @@ import { convertToEur, formatCurrency, isValidCurrency } from '@/lib/currency';
 
 export async function GET(request: NextRequest) {
   try {
-    // Get currency from query parameter (default to USD)
+    // Get query parameters
     const { searchParams } = new URL(request.url);
     const currencyParam = searchParams.get('currency')?.toUpperCase() || 'USD';
+    const demo = searchParams.get('demo') === 'true';
 
     if (!isValidCurrency(currencyParam)) {
       return NextResponse.json(
@@ -16,6 +17,26 @@ export async function GET(request: NextRequest) {
     }
 
     const currency = currencyParam as 'USD' | 'EUR';
+
+    // Demo mode - return mock data for screenshots
+    if (demo) {
+      const mockProjects = [
+        { name: 'Meditation Master', mrr: '$12,500', revenue: '$45,000' },
+        { name: 'Fitness Tracker Pro', mrr: '$8,300', revenue: '$28,000' },
+        { name: 'Recipe Book+', mrr: '$6,700', revenue: '$22,500' },
+        { name: 'Note Taking Guru', mrr: '$5,200', revenue: '$18,000' },
+        { name: 'Photo Editor Ultra', mrr: '$4,100', revenue: '$15,000' },
+        { name: 'Task Manager Pro', mrr: '$3,800', revenue: '$12,000' },
+        { name: 'Language Learning', mrr: '$3,200', revenue: '$10,500' },
+        { name: 'Sleep Tracker', mrr: '$2,000', revenue: '$5,000' },
+      ];
+
+      return NextResponse.json({
+        total_mrr: currency === 'EUR' ? '€42,300' : '$45,800',
+        total_revenue: currency === 'EUR' ? '€144,000' : '$156,000',
+        projects: mockProjects,
+      });
+    }
 
     // Extract password from Authorization header
     const authHeader = request.headers.get('authorization');

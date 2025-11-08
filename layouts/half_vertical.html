@@ -1,0 +1,23 @@
+<div class="layout layout--col gap">
+  <!-- Stacked metrics - vertical layout -->
+  <div class="grid grid--cols-1 gap">
+    {% render "metric_box", label: "MRR", value: total_mrr %}
+    {% render "metric_box", label: "Revenue", value: total_revenue %}
+  </div>
+
+  <!-- Project count only - no detailed table -->
+  <div class="item">
+    <div class="content">
+      <span class="description">
+        {% if projects.size > 0 %}
+          {{ projects.size }} project{% if projects.size != 1 %}s{% endif %}
+        {% else %}
+          No projects found
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Title bar -->
+{% render "title_bar" %}

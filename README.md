@@ -65,6 +65,9 @@ Once deployed, configure your TRMNL device:
 **Query Parameters:**
 - `currency` (optional): Currency for the response. Supported values: `USD` (default), `EUR`
   - Example: `/api/trmnl?currency=EUR`
+- `demo` (optional): Enable demo mode with mock data for screenshots/testing. Set to `true` to enable.
+  - Example: `/api/trmnl?demo=true`
+  - Example with currency: `/api/trmnl?demo=true&currency=EUR`
 
 **Response Format (USD):**
 ```json
@@ -113,20 +116,54 @@ Use these variables in your TRMNL template:
   - `{{ mrr }}` - Project MRR
   - `{{ revenue }}` - Project revenue
 
-## TRMNL Template
+## TRMNL Templates
 
-A complete template is available in `trmnl-template.html` featuring:
-- Large total metrics displayed at the top (MRR and 28-day Revenue)
-- Clean list of all projects below with individual metrics
+Multiple optimized layouts are available in the `/layouts` directory, each designed for different TRMNL screen configurations:
+
+### Layout Files
+
+- **`shared.html`** - Reusable Liquid templates (automatically prepended to all layouts)
+  - Title bar component
+  - Metric box templates
+  - Project table templates
+
+- **`full.html`** - Full screen layout (800x480px)
+  - Two-column metrics grid (MRR + Revenue)
+  - Complete projects table with all data
+  - Ideal for comprehensive overview
+
+- **`half_horizontal.html`** - Wide, short display
+  - Side-by-side metrics prominently displayed
+  - Top 5 projects only (condensed table)
+  - Optimized for horizontal half-screen
+
+- **`half_vertical.html`** - Narrow, tall display
+  - Stacked metrics (vertical layout)
+  - Project count only (no detailed table)
+  - Optimized for vertical half-screen
+
+- **`quadrant.html`** - Small square display
+  - Single primary metric (MRR)
+  - Large, readable value
+  - Compact title bar ("RC")
+  - Minimal chrome, maximum data visibility
+
+### Features
+
 - Built using TRMNL Framework v2 components
-- Optimized for e-ink displays (800x480px default)
+- Optimized for e-ink displays
 - Uses tabular numbers for proper alignment
+- DRY architecture with reusable Liquid templates
+- Each layout auto-adapts to screen size
 
-**To use:**
-1. Copy the contents of `trmnl-template.html`
-2. Paste into your TRMNL private plugin template editor
-3. The template uses Handlebars syntax and will automatically populate with your data
-4. No additional CSS needed - uses TRMNL's built-in framework classes
+### Usage
+
+1. Choose the layout that matches your TRMNL screen configuration
+2. Copy the contents of the appropriate layout file from `/layouts`
+3. Paste into your TRMNL private plugin template editor
+4. The shared templates are automatically included
+5. The template uses Liquid syntax and will automatically populate with your data
+6. No additional CSS needed - uses TRMNL's built-in framework classes
 
 ## Development
 

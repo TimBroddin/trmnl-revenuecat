@@ -1,0 +1,13 @@
+<div class="layout layout--col gap">
+  <!-- Two metric boxes - prominent display -->
+  <div class="grid grid--cols-2 gap">
+    {% render "metric_box", label: "MRR", value: total_mrr %}
+    {% render "metric_box", label: "Revenue", value: total_revenue %}
+  </div>
+
+  <!-- Limited projects table - top 5 only -->
+  {% render "project_table_limited", limit: 5 %}
+</div>
+
+<!-- Title bar -->
+{% render "title_bar" %}

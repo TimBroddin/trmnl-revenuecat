@@ -1,0 +1,13 @@
+<div class="layout layout--col gap">
+  <!-- Two metric boxes -->
+  <div class="grid grid--cols-2 gap">
+    {% render "metric_box", label: "MRR", value: total_mrr %}
+    {% render "metric_box", label: "Revenue", value: total_revenue %}
+  </div>
+
+  <!-- Full projects table -->
+  {% render "project_table_full" projects: projects %}
+</div>
+
+<!-- Title bar -->
+{% render "title_bar" %}

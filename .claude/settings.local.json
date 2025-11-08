@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:usetrmnl.com)"
+      "WebFetch(domain:usetrmnl.com)",
+      "mcp__docs-mcp__search_docs"
     ],
     "deny": [],
     "ask": []

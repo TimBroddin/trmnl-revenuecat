@@ -1,0 +1,110 @@
+<!-- Shared markup for TRMNL RevenueCat plugin -->
+<!-- This content is prepended to all view layouts -->
+
+<!-- Reusable Liquid Templates -->
+
+{% template title_bar %}
+<div class="title_bar">
+  <span class="title">RevenueCat</span>
+</div>
+{% endtemplate %}
+
+{% template metric_box %}
+<div class="item item--emphasis-2">
+  <div class="meta"></div>
+  <div class="content gap">
+    <span class="label label--small">{{ label }}</span>
+    <span class="value value--xxlarge value--tnums" data-value-format="true" data-fit-value="true">
+      {{ value }}
+    </span>
+  </div>
+</div>
+{% endtemplate %}
+
+{% template metric_single %}
+<div class="item item--emphasis-2">
+  <div class="meta"></div>
+  <div class="content gap">
+    <span class="label label--small">{{ label }}</span>
+    <span class="value value--xxxlarge value--tnums" data-value-format="true" data-fit-value="true">
+      {{ value }}
+    </span>
+  </div>
+</div>
+{% endtemplate %}
+
+{% template project_row %}
+<tr>
+  <td>
+    <span class="title title--small" data-clamp="1">{{ name }}</span>
+  </td>
+  <td>
+    <span class="value value--small value--tnums" data-value-format="true">{{ mrr }}</span>
+  </td>
+  <td>
+    <span class="value value--small value--tnums" data-value-format="true">{{ revenue }}</span>
+  </td>
+</tr>
+{% endtemplate %}
+
+{% template project_table_full %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <span class="label label--small">Project</span>
+      </th>
+      <th>
+        <span class="label label--small">MRR</span>
+      </th>
+      <th>
+        <span class="label label--small">Revenue</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if projects.size > 0 %}
+      {% for project in projects %}
+        {% render "project_row", name: project.name, mrr: project.mrr, revenue: project.revenue %}
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="3">
+          <span class="description">No projects found.</span>
+        </td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endtemplate %}
+
+{% template project_table_limited %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <span class="label label--small">Project</span>
+      </th>
+      <th>
+        <span class="label label--small">MRR</span>
+      </th>
+      <th>
+        <span class="label label--small">Revenue</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if projects.size > 0 %}
+      {% for project in projects limit: limit %}
+        {% render "project_row", name: project.name, mrr: project.mrr, revenue: project.revenue %}
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="3">
+          <span class="description">No projects found.</span>
+        </td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endtemplate %}
